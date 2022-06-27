@@ -11,7 +11,7 @@ kivy.require("2.1.0")
 vk_captcha = "" # НЕ ТРОГАТЬ!
 count = 50
 
-TOKEN = "vk1.a.02mxIV17hKvKAFTIauDgDY-ov-ULq4Ux-zoM9r1m4GpEbl4ZZQkeKP1bBtpeL8CpNEtKzPuschgEhlEda6xJmdLvoI5lp0p7teiR5MqLgbQb1p7hIcNkRh3iFvxEDqHrkuB4bttK8Ju6Nm7rKOug2nhHRLrCXA6o7GeDwg_6nG6LU6nSnRnsV_TEjlIXqh2T" # Трогать!
+TOKEN = "6ac24e021188a7601d9780c3e609c8c9e7fcc0dd5876f41e9b29c029b2de344732d7755a137f7d1da7958" # Трогать!
 
 vk_session = vk_api.VkApi(token = TOKEN)
 vk = vk_session.get_api()
