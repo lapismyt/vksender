@@ -7,7 +7,7 @@ title = SpamerVK
 package.name = vksender
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = lapismyt.vksender
+package.domain = org.lapismyt.vksender
 
 # (str) Source code where the main.py live
 source.dir = .
