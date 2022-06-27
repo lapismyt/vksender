@@ -7,7 +7,6 @@ from kivymd.uix.snackbar import Snackbar
 import vk_api
 import traceback
 import time
-kivy.require("2.1.0")
 vk_captcha = "" # НЕ ТРОГАТЬ!
 count = 50
 
