@@ -1,17 +1,22 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
 name: Building APK
-on: 
+
+on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+
 permissions:
   contents: read
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
@@ -19,19 +24,19 @@ jobs:
       with:
         python-version: "3.10"
     - name: Set up pip
-    run: |
-      python3 -m pip install --upgrade pip
-      sudo apt-get update
+      run: |
+        python3 -m pip install --upgrade pip
+        sudo apt-get update
     - name: Install buildozer
-    run: |
-      sudo apt-get install -y git zip unzip openjdk-13-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
-      python3 -m pip install --upgrade buildozer
-      python3 -m pip install --upgrade Cython==0.29.19 virtualenv
-      export PATH=$PATH:~/.local/bin/
+      run: |
+        sudo apt-get install -y git zip unzip openjdk-13-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
+        python3 -m pip install --upgrade buildozer
+        python3 -m pip install --upgrade Cython==0.29.19 virtualenv
+        export PATH=$PATH:~/.local/bin/
     - name: Build
-    run: yes | python3 -m buildozer -v android debug
+      run: yes | python3 -m buildozer -v android debug
     - name: Publish APK
-    uses: actions/upload-artifact@v3
-    with:
-        name: debug
-        path: bin/cookieminer-1.0-arm64-v8a_armeabi-v7a-debug.apk
+      uses: actions/upload-artifact@v3
+      with:
+          name: debug
+          path: bin/vksender-1.0-arm64-v8a_armeabi-v7a-debug.apk
