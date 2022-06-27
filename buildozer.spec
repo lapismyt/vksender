@@ -1,7 +1,7 @@
 [app]
 
 # (str) Title of your application
-title = VK Sender
+title = SpamerVK
 
 # (str) Package name
 package.name = vksender
@@ -13,7 +13,7 @@ package.domain = lapismyt.vksender
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,txt,ogg,kv,atlas, wav
+source.include_exts = py,png,txt,ogg,kv,atlas,wav
 
 # (list) List of inclusions using pattern matching
 #source.include_patterns = assets/*,images/*.png
@@ -37,17 +37,17 @@ version = 1.0
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy==2.1.0,vk_api
+requirements = python3,kivy==2.1.0,vk_api,kivymd
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../../kivy
 
 # (str) Presplash of the application
-#presplash.filename = 
+presplash.filename = presplash.png
 
 # (str) Icon of the application
-#icon.filename = 
+icon.filename = presplash.png
 
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
 orientation = portrait
@@ -63,7 +63,7 @@ orientation = portrait
 # author = © Copyright Info
 
 # change the major version of python used by the app
-osx.python_version = 3
+osx.python_version = 3.10
 
 # Kivy version to use
 osx.kivy_version = 2.1.0
@@ -80,7 +80,7 @@ fullscreen = 1
 # red, blue, green, black, white, gray, cyan, magenta, yellow, lightgray,
 # darkgray, grey, lightgrey, darkgrey, aqua, fuchsia, lime, maroon, navy,
 # olive, purple, silver, teal.
-android.presplash_color = grey
+android.presplash_color = black
 
 # (string) Presplash animation using Lottie format.
 # see https://lottiefiles.com/ for examples and https://airbnb.design/lottie/
