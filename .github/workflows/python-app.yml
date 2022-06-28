@@ -34,7 +34,7 @@ jobs:
         python3 -m pip install --upgrade Cython==0.29.19 virtualenv
         export PATH=$PATH:~/.local/bin/
     - name: Build
-      run: yes | python3 -m buildozer -v android debug
+      run: yes | python3 -m buildozer android debug
     - name: Publish APK
       uses: actions/upload-artifact@v3
       with:
