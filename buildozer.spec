@@ -13,7 +13,7 @@ package.domain = org.lapismyt.vksender
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,txt,ogg,kv,atlas,wav
+source.include_exts = py,png,txt,ogg,kv,atlas,wav,jpg
 
 # (list) List of inclusions using pattern matching
 #source.include_patterns = assets/*,images/*.png
@@ -22,7 +22,7 @@ source.include_exts = py,png,txt,ogg,kv,atlas,wav
 source.exclude_exts = spec,md
 
 # (list) List of directory to exclude (let empty to not exclude anything)
-source.exclude_dirs = tests, bin, venv
+source.exclude_dirs = tests, bin, venv, .git, .github
 
 # (list) List of exclusions using pattern matching
 # Do not prefix with './'
