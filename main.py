@@ -1,19 +1,39 @@
-import kivy
-import kivymd
-from kivymd.app import MDApp
-from kivy.lang import Builder
-from kivy.uix.screenmanager import ScreenManager
-from kivymd.uix.snackbar import Snackbar
-import vk_api
-import traceback
-import time
+import logging
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+loghandler = FileHandler("/storage/emulated/0/spamervk_log.txt")
+logger.addHandler(loghandler)
+
+try:
+	import kivy
+	import kivymd
+	from kivymd.app import MDApp
+	from kivy.lang import Builder
+	from kivy.uix.screenmanager import ScreenManager
+	from kivymd.uix.snackbar import Snackbar
+	import vk_api
+	import traceback
+	import time
+	import os
+	import sys
+except ImportError as err:
+	logger.error("Import")
+	logger.exception(err)
+
 vk_captcha = "" # НЕ ТРОГАТЬ!
 count = 50
 
 TOKEN = "6ac24e021188a7601d9780c3e609c8c9e7fcc0dd5876f41e9b29c029b2de344732d7755a137f7d1da7958" # Трогать!
 
-vk_session = vk_api.VkApi(token = TOKEN)
-vk = vk_session.get_api()
+logger.debug("Point 1")
+
+try:
+	vk_session = vk_api.VkApi(token = TOKEN)
+	vk = vk_session.get_api()
+	logger.debug("Point 2")
+except BaseException as err:
+	logger.error("VK Auth")
+	logger.exception(err)
 
 KV = """
 ScreenManager:
@@ -79,18 +99,33 @@ ScreenManager:
 					source: "not_captcha.png"
 """
 
+logger.debug("Point 3")
+
 class MainApp(MDApp):
 	def build(self):
-		return Builder.load_string(KV)
+		try:
+			return Builder.load_string(KV)
+		except BaseException as err:
+			logger.error("Build")
+			logger.exception(err)
 		
 	def on_start(self):
-		self.root.current = "main"
+		try:
+			self.root.current = "main"
+		except BaseException as err:
+			logger.error("On app start")
+			logger.exception(err)
+		
 	def start_job(self, user_id, message):
-		global vk_session
-		global vk
-		global count
-		count = round(self.root.ids.msg_count.value)
-		global x
+		try:
+			global vk_session
+			global vk
+			global count
+			count = round(self.root.ids.msg_count.value)
+			global x
+		except BaseException as err:
+			logger.error("Start job 1")
+			logger.exception(err)
 		try:
 			self.root.ids.msg_count.disabled = True
 			self.root.ids.send.disabled = True
@@ -116,11 +151,9 @@ class MainApp(MDApp):
 			self.root.ids.verify.disabled = False
 			snack = Snackbar(text="Enter captcha, please!")
 		except BaseException as err:
-			f = open("error.txt", "w")
-			f.write(str(err))
-			f.close()
+			logger.error("Start job 2")
+			logger.exception(err)
 			snack = Snackbar(text="Error!\n" + str(err))
-			traceback.print_exc()
 		snack.open()
 	def verify_captcha(self, user_id, message):
 		try:
@@ -158,11 +191,9 @@ class MainApp(MDApp):
 			self.root.ids.msg_count.disabled = False
 			snack = Snackbar(text="Done!")
 		except BaseException as err:
-			f = open("error.txt", "w")
-			f.write(str(err))
-			f.close()
+			logger.error("Verify captcha")
+			logger.exception(err)
 			snack = Snackbar(text="Error!\n" + str(err))
-			traceback.print_exc()
 		snack.open()
 		
 
