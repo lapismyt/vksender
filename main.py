@@ -1,9 +1,3 @@
-import logging
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-loghandler = FileHandler("/storage/emulated/0/spamervk_log.txt")
-logger.addHandler(loghandler)
-
 try:
 	import kivy
 	import kivymd
@@ -17,13 +11,12 @@ try:
 	import os
 	import sys
 except ImportError as err:
-	logger.error("Import")
-	logger.exception(err)
+	quit()
 
 vk_captcha = "" # НЕ ТРОГАТЬ!
 count = 50
 
-TOKEN = "6ac24e021188a7601d9780c3e609c8c9e7fcc0dd5876f41e9b29c029b2de344732d7755a137f7d1da7958" # Трогать!
+TOKEN = "" # Трогать!
 
 logger.debug("Point 1")
 
